@@ -7,29 +7,29 @@
         @if($tickets->isNotEmpty())
 
         <div class="my-4">
-        <form class="" action="" method="get">
-        <div class="row">
-            <div class="col-3">
-                <select class="form-control" name="sort">
-                    <option value="customer_name">Customer Name</option>
-                    <option value="created_at">Opened Time</option>
-                    <option value="updated_at">Last Updated Time</option>
-                    <option value="status">Status</option>
-                </select>
+                <form class="" action="" method="get">
+            <div class="row">
+                <div class="col-3">
+                    <select class="form-control" name="sort">
+                        <option value="customer_name" {{ request('sort', 'customer_name') == 'customer_name' ? 'selected' : null }}>Customer Name</option>
+                        <option value="created_at" {{ request('sort', 'created_at') == 'created_at' ? 'selected' : null }}>Opened Time</option>
+                        <option value="updated_at" {{ request('sort', 'updated_at') == 'updated_at' ? 'selected' : null }}>Last Updated Time</option>
+                        <option value="status" {{ request('sort', 'status') == 'status' ? 'selected' : null }}>Status</option>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <select class="form-control" name="sort_dir">
+                        <option value="asc" {{ request('sort_dir', 'asc') == 'asc' ? 'selected' : null }}>Ascending</option>
+                        <option value="desc" {{ request('sort_dir', 'desc') == 'desc' ? 'selected' : null }}>Descending</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <input type="text" name="q" value="{{ request('q') }}" class="form-control" placeholder="Reference, customer name or phone number">
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
             </div>
-            <div class="col-3">
-                <select class="form-control" name="sort_dir">
-                    <option value="asc">Ascending</option>
-                    <option value="desc">Descending</option>
-                </select>
-            </div>
-            <div class="col-4">
-                <input type="text" name="q" value="" class="form-control" placeholder="Reference, customer name or phone number">
-            </div>
-            <div class="col-2">
-                <button type="submit" name="submit" class="btn btn-primary w-100">Search</button>
-            </div>
-        </div>
         </form>
         </div>
         <table class="table table-striped table-bordered">
