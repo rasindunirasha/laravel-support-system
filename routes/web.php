@@ -23,3 +23,6 @@ Route::get('/', function () {
 Route::get('/tickets/search', 'App\Http\Controllers\TicketController@search')->name('tickets.search');
 Route::resource('/tickets', 'App\Http\Controllers\TicketController');
 
+Route::get('/login', 'App\Http\Controllers\LoginController@login')->name('login');
+Route::post('/login', 'App\Http\Controllers\LoginController@authenticate')->name('authenticate');
+Route::get('/logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
