@@ -37,4 +37,27 @@
 
     </div>
 </div>
+
+@if($ticket->comments->isNotEmpty())
+<div class="comments">
+    @foreach($ticket->comments as $comment)
+    <div class="comment mt-5">
+        <div class="comment-author text-muted small">
+            <strong>
+              @if (isset($comment->user->name))
+                  {{ $comment->user->name }}
+              @else
+                  {{ $ticket->customer_name }}
+              @endif
+            </strong>
+            at
+            {{ $comment->created_at->format('d M Y h:i a') }}
+        </div>
+        <div class="comment-content">
+            {{ $comment->content }}
+        </div>
+    </div>
+    @endforeach
+</div>
+@endif
 @endsection

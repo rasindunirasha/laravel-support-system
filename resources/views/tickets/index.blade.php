@@ -53,7 +53,7 @@
                     <td>{{ $ticket->email }}</td>
                     <td>{{ $ticket->phone }}</td>
                     <td>{{ $ticket->created_at->format('d/M/Y H:i:s') }}</td>
-                    <td></td>
+                    <td>{{ $ticket->lastCommentedAgent ? $ticket->lastCommentedAgent->name : 'None' }}</td>
                     <td></td>
                     <td></td>
                 </tr>
