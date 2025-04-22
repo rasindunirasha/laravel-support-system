@@ -11,10 +11,31 @@ class TicketController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $query = Ticket::query();
+    
+        // Search
+        if ($search = $request->input('q')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('customer_name', 'like', "%{$search}%")
+                  ->orWhere('phone', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+    
+        // Sorting
+        $sort = $request->input('sort', 'created_at'); // default sort
+        $dir = $request->input('sort_dir', 'desc'); // default direction
+    
+        $query->orderBy($sort, $dir);
+    
+        // Pagination
+        $tickets = $query->paginate(10)->appends($request->query());
+    
+        return view('tickets.index', compact('tickets'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
