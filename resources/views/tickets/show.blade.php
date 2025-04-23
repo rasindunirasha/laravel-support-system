@@ -39,25 +39,32 @@
 </div>
 
 @if($ticket->comments->isNotEmpty())
-<div class="comments">
-    @foreach($ticket->comments as $comment)
-    <div class="comment mt-5">
-        <div class="comment-author text-muted small">
-            <strong>
-              @if (isset($comment->user->name))
-                  {{ $comment->user->name }}
-              @else
-                  {{ $ticket->customer_name }}
-              @endif
-            </strong>
-            at
-            {{ $comment->created_at->format('d M Y h:i a') }}
+<div class="container mt-5">
+    <h3>Comments</h3>
+    <div class="comments-list">
+        @foreach($ticket->comments as $comment)
+        <div class="card mb-3">
+            <div class="card-header">
+                <strong>
+                    @if($comment->user_id)
+                        {{ $comment->user->name ?? 'System User' }}
+                    @else
+                        {{ $ticket->customer_name }} (Customer)
+                    @endif
+                </strong>
+                <span class="text-muted small float-right">
+                    {{ $comment->created_at->format('d M Y h:i a') }}
+                </span>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ $comment->content }}</p>
+                @if($comment->user_id && $comment->user_id === auth()->id())
+                    <small class="text-muted">(Your comment)</small>
+                @endif
+            </div>
         </div>
-        <div class="comment-content">
-            {{ $comment->content }}
-        </div>
+        @endforeach
     </div>
-    @endforeach
 </div>
 @endif
 @endsection
