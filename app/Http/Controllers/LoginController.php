@@ -50,6 +50,10 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/tickets');
+    }
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
     }
 }
