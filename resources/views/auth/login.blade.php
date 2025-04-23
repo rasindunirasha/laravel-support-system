@@ -38,6 +38,8 @@
                     </div>
                 </div>
             </div>
+            <!-- Inside your login form -->
+           <p>Don't have an account? <a href="{{ route('signup') }}">Sign up here</a></p>
         </form>
         <!-- FORM END -->
 
