@@ -67,10 +67,10 @@ class TicketController extends Controller
     $ticket->status = 0;
 
     if ($ticket->save()) {
-        // ✅ Send the email here
-        Mail::to($ticket->email)->send(new \App\Mail\TicketCreated($ticket));
+      // dispatch the TicketCreated event
+      \App\Events\TicketCreated::dispatch($ticket);
 
-        return redirect()->route('tickets.show', $ticket->id)
+        return redirect(route('tickets.show', $ticket->id))
             ->with('success', 'Your ticket is created successfully. Please write down the reference number to check the ticket status later.');
     }
 

@@ -40,4 +40,6 @@
 
 <br>
 
-<p>Thank you.</p>
+<h1>Thank you, {{ $ticket->customer_name }}</h1>
+<p>Your ticket has been created successfully.</p>
+<p>Reference Number: {{ $ticket->ref }}</p>
