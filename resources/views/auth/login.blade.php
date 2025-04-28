@@ -6,7 +6,7 @@
     <h1>Login</h1>
     <div class="m-5">
 
-        <!-- FORM START -->
+        
         <form class="" action="{{ route('authenticate') }}" method="post">
             {{ csrf_field() }}
 
@@ -38,10 +38,10 @@
                     </div>
                 </div>
             </div>
-            <!-- Inside your login form -->
+            
            <p>Don't have an account? <a href="{{ route('signup') }}">Sign up here</a></p>
         </form>
-        <!-- FORM END -->
+        
 
     </div>
 </div>

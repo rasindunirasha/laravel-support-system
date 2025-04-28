@@ -9,10 +9,14 @@ class Ticket extends Model
 {
     use HasFactory;
 
-    /**
-     * A Ticket Has Many Comments
-     *
-     */
+    protected $fillable = [
+        'customer_name',
+        'email',
+        'phone',
+        'description',
+        'ref',
+        'status',
+    ];
     protected $with = ['comments', 'comments.user'];
     public function comments()
     {

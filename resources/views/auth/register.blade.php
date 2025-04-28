@@ -5,7 +5,7 @@
     <h1>Sign Up</h1>
     <div class="m-5">
 
-        <!-- FORM START -->
+        
         <form class="" action="{{ route('register') }}" method="post">
             {{ csrf_field() }}
 
@@ -67,7 +67,7 @@
             </div>
             <p>Already have an account? <a href="{{ route('login') }}">Login here</a></p>
         </form>
-        <!-- FORM END -->
+        
 
     </div>
 </div>
