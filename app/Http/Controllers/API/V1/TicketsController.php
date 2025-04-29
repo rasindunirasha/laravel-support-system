@@ -9,6 +9,12 @@ use App\Events\TicketCreated; // add this
 
 class TicketsController extends Controller
 {
+    public function index()
+    {
+        return response()->json([
+            'data' => Ticket::all()
+        ]);
+    }
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -43,4 +49,6 @@ class TicketsController extends Controller
             'message' => 'Oops! Could not create your ticket. Please try later.'
         ], 500);
     }
+  
+
 }
