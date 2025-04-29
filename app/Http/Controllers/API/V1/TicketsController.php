@@ -9,11 +9,14 @@ use App\Events\TicketCreated; // add this
 
 class TicketsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json([
-            'data' => Ticket::all()
-        ]);
+        if ($request->has('ref')) {
+            $ticket = Ticket::where('ref', $request->ref)->first();
+            return response()->json(['data' => $ticket]);
+        }
+    
+        return response()->json(['data' => Ticket::all()]);
     }
     public function store(Request $request)
     {
