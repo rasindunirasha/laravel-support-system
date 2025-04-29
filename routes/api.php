@@ -7,3 +7,5 @@ use App\Http\Controllers\API\V1\TicketsController;
 Route::prefix('v1')->group(function () {
     Route::post('/tickets', [TicketsController::class, 'store']);
 });
+
+Route::get('/v1/tickets', [TicketsController::class, 'index']);
